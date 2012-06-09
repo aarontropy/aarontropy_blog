@@ -51,13 +51,6 @@ class Article(models.Model):
 			else:
 				break
 
-		
-
-
-	def is_published(self):
-		return self.status == 'PUB'
-	is_published.boolean  = True
-	is_published.short_description = 'Published?'
 
 	def __unicode__(self):
 		return self.title

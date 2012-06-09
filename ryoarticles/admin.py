@@ -19,8 +19,15 @@ class CommonMedia:
 	}
 
 class ArticleAdmin(admin.ModelAdmin):
-	list_display = ('title', 'created', 'is_published')
+	list_display = ('title', 'published', 'created', 'is_published')
+	ordering = ['published']
 	exclude = ('slug',)
+
+	def is_published(self, obj):
+		return obj.status == 'PUB'
+	is_published.admin_order_field = 'status'
+	is_published.boolean  = True
+	is_published.short_description = 'Published?'
 	
 admin.site.register(Article, ArticleAdmin, Media=CommonMedia)
 
