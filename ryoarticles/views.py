@@ -4,7 +4,7 @@ from django.template import RequestContext
 
 
 def home(request):
-	articles = Article.objects.order_by('-created')[:10]
+	articles = Article.objects.filter(status__exact='PUB').order_by('-published')[:10]
 	return render_to_response('Manifest/home.html',
 		{'articles': articles},
 		context_instance=RequestContext(request))

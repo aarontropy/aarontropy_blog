@@ -19,7 +19,7 @@ class CommonMedia:
 	}
 
 class ArticleAdmin(admin.ModelAdmin):
-	list_display = ('title', 'created')
+	list_display = ('title', 'created', 'is_published')
 	exclude = ('slug',)
 	
 admin.site.register(Article, ArticleAdmin, Media=CommonMedia)
