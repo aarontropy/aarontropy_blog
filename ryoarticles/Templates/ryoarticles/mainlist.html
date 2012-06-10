@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Aarontropy | Home{% endblock %}
+
+{% block content %}
+      {% if articles %}
+        {% for article in articles %}
+
+      <div>
+        <h6>{{ article.created }}</h6>
+        <div class="postContent">
+          <h1><a href="{{ article.get_absolute_url }}">{{ article.title|safe }}</a></h1>
+          
+          <div>
+
+              {{ article.content|safe }}
+
+          </div>
+        </div>
+        <div class="postMeta">
+        <!-- no meta stuff now, maybe later -->
+        </div>
+      </div>
+
+		{% endfor %}
+
+    <div class="pageNav">
+      <div class="prev"></div>
+      <div class="next"></div>
+    </div>
+
+	{% else %}
+
+		<h2>Not Found</h2>
+		<p>Sorry, but you are looking for something that isn't here.</p>
+
+	{% endif %}
+
+{% endblock %}
